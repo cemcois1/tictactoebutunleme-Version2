@@ -29,19 +29,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   button: {
+    width: 400,
+    height: '10%',
     padding: 10,
     backgroundColor: 'white',
     borderRadius: 5,
+    marginVertical: 10,
   },
   buttonText: {
     fontWeight: 'bold',
     color: 'black',
-  }
+    textAlign: 'center',
+    fontSize: 30,
+  },
 });
+
 export default Home;
 

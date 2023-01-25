@@ -5,7 +5,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Home from './src/Screens/Home';
 import TicTacToe from './src/Screens/TicTacToe';
 import TicTacToeTwoPlayer from './src/TicTacToeTwoPlayer';
-//https://reactnavigation.org/docs/stack-navigator/
 const StackNavigator = createStackNavigator({
   Home: {
     screen: Home,
