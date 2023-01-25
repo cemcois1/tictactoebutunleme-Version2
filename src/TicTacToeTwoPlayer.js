@@ -101,13 +101,15 @@ const TicTacToeTwoPlayer = () => {
       return;
     }
     let spaceCount=0;
-    for (let i = 0; i < 3; i++){
-      for (let j = 0; i < 3; i++){
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
       if(board[i][j]==' '){
         spaceCount+=1;
-        
-      }}
+         }
     }
+}
+
     if(spaceCount==0){
       Alert.alert(
         `Draw!`,
@@ -144,11 +146,12 @@ const TicTacToeTwoPlayer = () => {
         {row.map((col, colIndex) => (
           <TouchableOpacity
             key={colIndex}
-            style={styles.col}
+            style={[styles.col,{borderLeftWidth: colIndex%3===0? 0:2,borderTopWidth:rowIndex%3===0?0:2,borderBottomWidth:rowIndex%3===2?0:2,borderRightWidth:colIndex%3===2?0:2}]}
             onPress={() => handlePress(rowIndex, colIndex)}
             activeOpacity={0.6}
           >
-            <Text style={styles.textStyle}>{col}</Text>
+            <Text style={[styles.textStyle, { color: col === 'X' ? 'blue' : 'red' }]}>{col}</Text>
+
           </TouchableOpacity>
         ))}
       </View>
