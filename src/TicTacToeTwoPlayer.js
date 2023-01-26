@@ -40,7 +40,7 @@ const TicTacToeTwoPlayer = () => {
       if (board[0][i] !== ' ' && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
         setWinner(board[0][i]);
         Alert.alert(
-          `Player ${board[0][1]} wins!`,
+          `Player ${board[0][i]} wins!`,
           'Do you want to play again?',
           [
             {
