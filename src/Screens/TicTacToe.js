@@ -15,6 +15,7 @@ const TicTacToe = () => {
     for (let i = 0; i < 3; i++) {
       if (board[i][0] !== ' ' && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
         setWinner(board[i][0]);
+        console.log(i);
         Alert.alert(
           `Player ${board[i][0]} wins!`,
           'Do you want to play again?',
@@ -39,8 +40,10 @@ const TicTacToe = () => {
     for (let i = 0; i < 3; i++) {
       if (board[0][i] !== ' ' && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
         setWinner(board[0][i]);
+        console.log(i+"Sutun");
+
         Alert.alert(
-          `Player ${board[0][1]} wins!`,
+          `Player ${board[0][i]} wins!`,
           'Do you want to play again?',
           [
             {
@@ -147,6 +150,79 @@ const TicTacToe = () => {
 
   const RobotTurn = () => {
         let newBoard = [...board];
+
+        // check rows
+        for (let i = 0; i < 3; i++) {
+        if (newBoard[i][0] === 'X' && newBoard[i][1] === 'X' && newBoard[i][2] === ' ') {
+        newBoard[i][2] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[i][0] === 'X' && newBoard[i][2] === 'X' && newBoard[i][1] === ' ') {
+        newBoard[i][1] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[i][1] === 'X' && newBoard[i][2] === 'X' && newBoard[i][0] === ' ') {
+        newBoard[i][0] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        }
+
+        // check columns
+        for (let i = 0; i < 3; i++) {
+        if (newBoard[0][i] === 'X' && newBoard[1][i] === 'X' && newBoard[2][i] === ' ') {
+        newBoard[2][i] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[0][i] === 'X' && newBoard[2][i] === 'X' && newBoard[1][i] === ' ') {
+        newBoard[1][i] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if(newBoard[1][i] === 'X' && newBoard[2][i] === 'X' && newBoard[0][i] === ' ') {
+        newBoard[0][i] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        }
+        
+        // check diagonals
+        if (newBoard[0][0] === 'X' && newBoard[1][1] === 'X' && newBoard[2][2] === ' ') {
+        newBoard[2][2] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[0][0] === 'X' && newBoard[2][2] === 'X' && newBoard[1][1] === ' ') {
+        newBoard[1][1] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[1][1] === 'X' && newBoard[2][2] === 'X' && newBoard[0][0] === ' ') {
+        newBoard[0][0] = 'O';
+        setBoard(newBoard);
+        setTurn('X');
+        return;
+        }
+        if (newBoard[0][2] === 'X' && newBoard[1][1] === 'X' && newBoard[2][0] === ' ') {
+        newBoard[2][0] = 'O';
+        setTurn('X');
+        return;
+        };
+
+
+//Random Tile Filling
+        newBoard = [...board];
         let emptySpaces = [];
         for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -156,14 +232,13 @@ const TicTacToe = () => {
         }
         }
         if (emptySpaces.length > 0) {
-        let randomIndex = Math.floor(Math.random() * emptySpaces.length);
-        let randomSpace = emptySpaces[randomIndex];
-        newBoard[randomSpace[0]][randomSpace[1]] = 'O';
-        setBoard(newBoard);
-        setTurn('X');
+                let randomIndex = Math.floor(Math.random() * emptySpaces.length);
+                let randomSpace = emptySpaces[randomIndex];
+                newBoard[randomSpace[0]][randomSpace[1]] = 'O';
+                setBoard(newBoard);
+                setTurn('X');
         }
-        };
-
+        }
 
   const renderRow = (row, rowIndex) => {
     return (
